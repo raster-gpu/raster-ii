@@ -27,16 +27,8 @@ class Bc1Compressor extends Module {
   val maxColorReg = Reg(Vec(3, UInt(8.W)))
   val indicesReg = Reg(Vec(16, UInt(2.W)))
   io.addr := addrReg
-  io.block.c0 := Cat(
-    maxColorReg(0)(7, 3),
-    maxColorReg(1)(7, 2),
-    maxColorReg(2)(7, 3)
-  )
-  io.block.c1 := Cat(
-    minColorReg(0)(7, 3),
-    minColorReg(1)(7, 2),
-    minColorReg(2)(7, 3)
-  )
+  io.block.c0 := "hFFFF".U
+  io.block.c1 := "h0000".U
   io.block.indices := indicesReg
 
   switch(stateReg) {
